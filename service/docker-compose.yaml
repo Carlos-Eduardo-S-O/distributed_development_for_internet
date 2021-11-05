@@ -1,0 +1,44 @@
+version: '3'
+services:
+  players:
+    image: topTen
+    build: .
+    expose:
+      - '5000'
+      volumes:
+      - './top_players:/service'
+      - './assets/top_playes:/assets'
+    command: python3 service.py
+    networks:
+      toptennet:
+        ipv4_address: 172.29.1.1
+  teams:
+    image: topTen
+    build: .
+    expose:
+      - '5000'
+      volumes:
+      - './top_teams:/service'
+      - './assets/top_teams:/assets'
+    command: python3 service.py
+    networks:
+      toptennet:
+        ipv4_address: 172.29.1.2
+  teamsofall:
+    image: topTen
+    build: .
+    expose:
+      - '5000'
+      volumes:
+      - './top_teams_of_all_time:/service'
+      - './assets/top_teams_of_all:/assets'
+    command: python3 service.py
+    networks:
+      toptennet:
+        ipv4_address: 172.29.1.3
+networks:
+  toptennet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.29.1.0/16

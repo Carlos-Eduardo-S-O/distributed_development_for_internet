@@ -1,0 +1,60 @@
+{
+    "players":[
+        {
+            "name": "Aleksandr 's1mple' KostylievUkraine",
+            "nickname": "s1mple",
+            "rating": 1.25,
+            "maps": 478
+        },
+        {
+            "name": "Mathieu 'ZywOo' Herbaut",
+            "nickname": "ZywOo",
+            "rating": 1.24,
+            "maps":195,
+            "country": "France"
+        },
+        {
+            "name": "Nicolai 'device' Reedtz",
+            "nickname": "device",
+            "rating": 1.17,
+            "maps": 611,
+            "country": "Denmark"
+        },
+        {
+            "name":"Nikola 'NiKo' Kovač",
+            "nickname": "NiKo",
+            "rating": 1.16,
+            "maps": 540,
+            "country":"Bosnia and Herzegovina"
+            
+        },
+        {
+            "name": "Marcelo 'coldzera' David",
+            "nickname": "coldzera",
+            "rating": 1.16,
+            "maps": 594,
+            "country": "Brazil"
+        },
+        {
+            "name": "Özgür 'woxic' Eker",
+            "nickname": "woxic",
+            "rating": 1.13,
+            "maps": 219,
+            "country": "Turkey"
+        },
+        {
+            "name":"Tomáš 'oskar' Šťastný",
+            "nickname": "oskar",
+            "rating": 1.11,
+            "maps": 284,
+            "country":"Czech Republic"
+        },
+        {
+            "name":"Denis 'electronic' Sharipov",
+            "nickname": "electronic",
+            "rating":1.10,
+            "maps": 366,
+            "country": "Russia"
+        }
+    ]
+}
