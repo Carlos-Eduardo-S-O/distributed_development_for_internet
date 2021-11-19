@@ -10,22 +10,51 @@ DEBUG    = True
 HOST     = '0.0.0.0'
 PORT     = 5000
 
-# Dictionaries
-TOP_TEN = ''
+#service info
+AUTHOR  = "Carlos Eduardo"
+EMAIL   = "carlos.edu.estudos@gmail.com"
+VERSION = "1.0"
 
-# Load file
-def load_file():
-    pass
+# Dictionaries
+TOP_TEN = 'service/assets/top_teams/best_teams.json'
+
+# Load file with the best teams today
+def load_teams():
+    teams = None
+    
+    # Open the file and get the list of teams
+    with open(TOP_TEN, 'r') as file:
+        list = json.load(file)
+        teams = list["teams"]
+
+    return teams
 
 # This route provides the information about the service is working or not
+@service.route("/teams/isalive")
 def is_alive():
-    pass
+    return IS_ALIVE
 
 # This route provides service informations
+@service.route("/teams/info")
 def info():
-    pass
+    return jsonify(
+        AUTHOR,
+        EMAIL,
+        VERSION
+    )
 
-# Main route return the top players
-service.route('/')
-def top_ten_players():
-    pass
+# Main route return the top teams today
+@service.route('/teams')
+def top_ten_teams():
+    teams = load_teams()
+    
+    return jsonify(
+        teams
+    )
+
+if __name__ == "__main__":
+    service.run(
+        debug= DEBUG,
+        host= HOST,
+        port=PORT
+    )

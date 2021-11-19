@@ -28,7 +28,7 @@ def load_players():
         players = list["players"]
 
     return players
-    
+
 
 # This route provides the information about the service is working or not
 @service.route("/players/isalive")
@@ -52,6 +52,7 @@ def top_players():
     return jsonify(
         players
     )
+
 if __name__ == '__main__':
     service.run(
         debug= DEBUG,
