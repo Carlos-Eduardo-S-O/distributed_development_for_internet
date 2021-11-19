@@ -18,8 +18,8 @@ VERSION = "1.0"
 # Dictionaries
 TOP_PLAYERS = 'service/assets/top_playes/best_players.json'
 
-# Load file
-def load_file():
+# Load top ten playes from file
+def load_players():
     players = None
     
     # Open the file and get the list of players
@@ -31,22 +31,30 @@ def load_file():
     
 
 # This route provides the information about the service is working or not
-service.route("/players/isalive")
+@service.route("/players/isalive")
 def is_alive():
     return IS_ALIVE
 
 # This route provides service informations
+@service.route("/players/info")
 def info():
     return jsonify(
-        
+        AUTHOR,
+        EMAIL,
+        VERSION
     )
 
 # Main route return the top players
-service.route('/players')
+@service.route("/players")
 def top_players():
-    pass
+    players = load_players()
 
+    return jsonify(
+        players
+    )
 if __name__ == '__main__':
     service.run(
-        debug
+        debug= DEBUG,
+        host= HOST,
+        port=PORT
     )
