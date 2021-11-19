@@ -1,37 +1,37 @@
 version: '3'
 services:
   players:
-    image: topTen
+    image: top
     build: .
     expose:
       - '5000'
-      volumes:
+    volumes:
       - './top_players:/service'
-      - './assets/top_playes:/assets'
+      - './assets/top_playes:/dictionaries'
     command: python3 service.py
     networks:
       toptennet:
         ipv4_address: 172.29.1.1
   teams:
-    image: topTen
+    image: top
     build: .
     expose:
       - '5000'
-      volumes:
+    volumes:
       - './top_teams:/service'
-      - './assets/top_teams:/assets'
+      - './assets/top_teams:/dictionaries'
     command: python3 service.py
     networks:
       toptennet:
         ipv4_address: 172.29.1.2
   teamsofall:
-    image: topTen
+    image: top
     build: .
     expose:
       - '5000'
-      volumes:
+    volumes:
       - './top_teams_of_all_time:/service'
-      - './assets/top_teams_of_all:/assets'
+      - './assets/top_teams_of_all:/dictionaries'
     command: python3 service.py
     networks:
       toptennet:
