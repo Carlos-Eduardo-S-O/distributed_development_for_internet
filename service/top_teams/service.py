@@ -16,14 +16,14 @@ EMAIL   = "carlos.edu.estudos@gmail.com"
 VERSION = "1.0"
 
 # Dictionaries
-TOP_TEN = 'service/assets/top_teams/best_teams.json'
+TOP_TEAMS = 'service/assets/top_teams/best_teams.json'
 
 # Load file with the best teams today
 def load_teams():
     teams = None
     
     # Open the file and get the list of teams
-    with open(TOP_TEN, 'r') as file:
+    with open(TOP_TEAMS, 'r') as file:
         list = json.load(file)
         teams = list["teams"]
 

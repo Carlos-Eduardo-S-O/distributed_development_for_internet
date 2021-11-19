@@ -1,51 +1,59 @@
 {
     "teams":[
         {
+            "ranking": 1,
             "name": "Natus Vincere",
-            "Rating": 1.04,
-            "Maps": 438
+            "rating": 1.04,
+            "maps": 438
         },
 
         {
+            "ranking": 2,
             "name": "Astralis",
-            "Rating": 1.02,
-            "Maps": 491
+            "rating": 1.02,
+            "maps": 491
         },
 
         {
+            "ranking": 3,
             "name": "FaZe",
-            "Rating": 1.01,
-            "Maps":472
+            "rating": 1.01,
+            "maps":472
         },
 
         {
+            "ranking": 4,
             "name": "SK",
-            "Rating": 1.01,
-            "Maps": 257
+            "rating": 1.01,
+            "maps": 257
         },
 
         {
+            "ranking": 5,
             "name": "Liquid",
-            "Rating": 1.00,
-            "Maps": 428
+            "rating": 1.00,
+            "maps": 428
         },
-
+        
         {
+            "ranking": 6,
             "name": "MOUZ",
-            "Rating": 1.00,
-            "Maps": 329
+            "rating": 1.00,
+            "maps": 329
         },
 
         {
+            "ranking": 7,
             "name": "North",
-            "Rating": 0.99,
-            "Maps": 203
+            "rating": 0.99,
+            "maps": 203
         },
 
         {
+            "ranking": 8,
             "name": "G2",
-            "Rating": 0.99,
-            "Maps": 345
+            "rating": 0.99,
+            "maps": 345
         }
     ]
 }
