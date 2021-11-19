@@ -16,7 +16,7 @@ EMAIL   = "carlos.edu.estudos@gmail.com"
 VERSION = "1.0"
 
 # Dictionaries
-TOP_PLAYERS = 'service/assets/top_playes/best_players.json'
+TOP_PLAYERS = '/dictionaries/best_players.json'
 
 # Load top ten playes from file
 def load_players():
