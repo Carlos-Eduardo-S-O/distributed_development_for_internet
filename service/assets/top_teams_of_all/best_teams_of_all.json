@@ -1,5 +1,51 @@
 {
     "teams":[
-        
+        {
+            "name": "Natus Vincere",
+            "Rating": 1.04,
+            "Maps": 438
+        },
+
+        {
+            "name": "Astralis",
+            "Rating": 1.02,
+            "Maps": 491
+        },
+
+        {
+            "name": "FaZe",
+            "Rating": 1.01,
+            "Maps":472
+        },
+
+        {
+            "name": "SK",
+            "Rating": 1.01,
+            "Maps": 257
+        },
+
+        {
+            "name": "Liquid",
+            "Rating": 1.00,
+            "Maps": 428
+        },
+
+        {
+            "name": "MOUZ",
+            "Rating": 1.00,
+            "Maps": 329
+        },
+
+        {
+            "name": "North",
+            "Rating": 0.99,
+            "Maps": 203
+        },
+
+        {
+            "name": "G2",
+            "Rating": 0.99,
+            "Maps": 345
+        }
     ]
 }

@@ -1,5 +1,54 @@
 {
     "teams":[
-        
+        {
+            "ranking": 1,
+            "team": "Natus Vincere",
+            "nacionality": "Russia"
+        },
+        {
+            "ranking": 2,
+            "team": "G2",
+            "nacionality": "Europe"
+        },
+        {
+            "ranking": 3,
+            "team": "Gambit",
+            "nacionality": "Russia"
+        },
+        {
+            "ranking": 4,
+            "team": "NIP",
+            "nacionality": "Sweden"
+        },
+        {
+            "ranking": 5,
+            "team": "Heroic",
+            "nacionality": "Denmark"
+        },
+        {
+            "ranking": 6,
+            "team": "Vitality",
+            "nacionality": "France"
+        },
+        {
+            "ranking": 7,
+            "team": "Virtus.pro",
+            "nacionality": "CIS"
+        },
+        {
+            "ranking": 8,
+            "team": "FaZe",
+            "nacionality": "Europe"
+        },
+        {
+            "ranking": 9,
+            "team": "Copenhagen Flames",
+            "nacionality": "Denmark"
+        },
+        {
+            "ranking": 10,
+            "team": "Furia",
+            "nacionality": "Brazil"
+        }
     ]
 }
