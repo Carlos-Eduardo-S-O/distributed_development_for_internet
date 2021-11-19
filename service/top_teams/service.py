@@ -14,6 +14,8 @@ PORT     = 5000
 AUTHOR  = "Carlos Eduardo"
 EMAIL   = "carlos.edu.estudos@gmail.com"
 VERSION = "1.0"
+DESCRIPTION = "Provides the best teams today"
+STATUS = "Working"
 
 # Dictionaries
 TOP_TEAMS = '/dictionaries/best_teams.json'
@@ -36,16 +38,18 @@ def is_alive():
 
 # This route provides service informations
 @service.route("/teams/info")
-def info():
+def get_info():
     return jsonify(
-        AUTHOR,
-        EMAIL,
-        VERSION
+        author = AUTHOR,
+        email = EMAIL,
+        version = VERSION,
+        decription = DESCRIPTION,
+        status = STATUS
     )
 
 # Main route return the top teams today
 @service.route('/teams')
-def top_ten_teams():
+def get_best_teams_of_today():
     teams = load_teams()
     
     return jsonify(

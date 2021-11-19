@@ -11,9 +11,11 @@ HOST     = '0.0.0.0'
 PORT     = 5000
 
 #service info
-AUTHOR  = "Carlos Eduardo"
-EMAIL   = "carlos.edu.estudos@gmail.com"
-VERSION = "1.0"
+AUTHOR      = "Carlos Eduardo"
+EMAIL       = "carlos.edu.estudos@gmail.com"
+VERSION     = "1.0"
+DESCRIPTION = "Provides the best teams of all time"
+STATUS = "Working"
 
 # Dictionaries
 TOP_TEAMS = '/dictionaries/best_teams_of_all.json'
@@ -36,16 +38,18 @@ def is_alive():
 
 # This route provides service informations
 @service.route("/best_teams_of_all_time/info")
-def info():
+def get_info():
     return jsonify(
-        AUTHOR,
-        EMAIL,
-        VERSION
+        author = AUTHOR,
+        email = EMAIL,
+        version = VERSION,
+        decription = DESCRIPTION,
+        status = STATUS
     )
 
 # Main route return the top players
 @service.route('/best_teams_of_all_time')
-def top_ten_players():
+def get_best_team_of_all_time():
     players = load_teams()
     
     return jsonify(
