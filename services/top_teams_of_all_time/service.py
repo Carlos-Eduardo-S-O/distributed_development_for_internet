@@ -1,5 +1,6 @@
 # This service returns the ranking of the best csgo teams in the world of all time
-from flask import Flask, jsonify, json
+from flask import Flask, jsonify, request
+from pymemcache.client import base
 
 # Flask service
 service = Flask(__name__)
@@ -15,21 +16,9 @@ AUTHOR      = "Carlos Eduardo"
 EMAIL       = "carlos.edu.estudos@gmail.com"
 VERSION     = "1.0"
 DESCRIPTION = "Provides the best teams of all time"
-STATUS = "Working"
 
-# Dictionaries
-TOP_TEAMS = '/dictionaries/best_teams_of_all.json'
-
-# Load file with the best teams of all time
-def load_teams():
-    teams = None
-    
-    # Open the file and get the list of teams
-    with open(TOP_TEAMS, 'r') as file:
-        list = json.load(file)
-        teams = list["teams"]
-
-    return teams
+# Database host
+DATABASE = "data_base"
 
 # This route provides the information about the service is working or not
 @service.route("/best_teams_of_all_time/isalive")
@@ -43,18 +32,32 @@ def get_info():
         author = AUTHOR,
         email = EMAIL,
         version = VERSION,
-        decription = DESCRIPTION,
-        status = STATUS
+        decription = DESCRIPTION
     )
 
-# Main route return the top players
-@service.route('/best_teams_of_all_time')
-def get_best_team_of_all_time():
-    players = load_teams()
+# This route is the responsible to write the best teams of all time list
+@service.route("/best_teams_of_all_time/write", methods=["POST", "GET"])
+def write_teams_of_all_time():
+    teams = request.get_json()
     
-    return jsonify(
-        players
-    )
+    if teams:
+        client = base.Client((DATABASE, 11211))
+        client.set("teams_of_all_time", teams)
+
+    return "Ok"
+
+# Main route return the top players
+@service.route("/best_teams_of_all_time")
+def get_best_team_of_all_time():
+    response = "error: o ranking de melhors times de todos os tempos não foi incializado."
+    
+    client = base.Client((DATABASE, 11211))
+    teams = client.get("teams_of_all_time")
+    
+    if teams:
+        response = teams
+    
+    return response
 
 if __name__ == "__main__":
     service.run(

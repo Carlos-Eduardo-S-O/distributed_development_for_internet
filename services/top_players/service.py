@@ -1,5 +1,6 @@
 # This service returns the ranking of the best players in the world
-from flask import Flask, jsonify, json
+from flask import Flask, request, jsonify
+from pymemcache.client import base
 
 # Flask service
 service = Flask(__name__)
@@ -15,22 +16,9 @@ AUTHOR  = "Carlos Eduardo"
 EMAIL   = "carlos.edu.estudos@gmail.com"
 VERSION = "1.0"
 DESCRIPTION = "Provides the best players today"
-STATUS = "Working"
 
-# Dictionaries
-TOP_PLAYERS = '/dictionaries/best_players.json'
-
-# Load top ten playes from file
-def load_players():
-    players = None
-    
-    # Open the file and get the list of players
-    with open(TOP_PLAYERS, 'r') as file:
-        list = json.load(file)
-        players = list["players"]
-
-    return players
-
+# Database host
+DATABASE = "data_base"
 
 # This route provides the information about the service is working or not
 @service.route("/players/isalive")
@@ -44,19 +32,32 @@ def get_info():
         author = AUTHOR,
         email = EMAIL,
         version = VERSION,
-        decription = DESCRIPTION,
-        status = STATUS
+        decription = DESCRIPTION
     )
+
+# This route is the responsible to write the player list
+@service.route("/players/write", methods=["POST", "GET"])
+def write_players():
+    players = request.get_json()
+
+    if players:
+        client = base.Client((DATABASE, 11211))
+        client.set("players", players)
+    
+    return "Ok"
 
 # Main route return the top players
 @service.route("/players")
 def get_best_players():
-    players = load_players()
+    response = "error: o ranking de jogadores não foi inicializado."
 
-    return jsonify(
-        players
-    )
+    client = base.Client((DATABASE, 11211))
+    players = client.get("players")
+    
+    if players:
+        response = players
 
+    return response
 if __name__ == '__main__':
     service.run(
         debug= DEBUG,

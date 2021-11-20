@@ -1,5 +1,6 @@
 # This service returns the ranking of the best csgo teams in the world
-from flask import Flask, jsonify, json
+from flask import Flask, jsonify, request
+from pymemcache.client import base
 
 # Flask service
 service = Flask(__name__)
@@ -15,21 +16,9 @@ AUTHOR  = "Carlos Eduardo"
 EMAIL   = "carlos.edu.estudos@gmail.com"
 VERSION = "1.0"
 DESCRIPTION = "Provides the best teams today"
-STATUS = "Working"
 
-# Dictionaries
-TOP_TEAMS = '/dictionaries/best_teams.json'
-
-# Load file with the best teams today
-def load_teams():
-    teams = None
-    
-    # Open the file and get the list of teams
-    with open(TOP_TEAMS, 'r') as file:
-        list = json.load(file)
-        teams = list["teams"]
-
-    return teams
+# Database host
+DATABASE = "data_base"
 
 # This route provides the information about the service is working or not
 @service.route("/teams/isalive")
@@ -43,19 +32,33 @@ def get_info():
         author = AUTHOR,
         email = EMAIL,
         version = VERSION,
-        decription = DESCRIPTION,
-        status = STATUS
+        decription = DESCRIPTION
     )
+
+# This route is the responsible to write the team list
+@service.route("/teams/write", methods=["POST", "GET"])
+def write_teams():
+    teams = request.get_json()
+    
+    if teams:
+        client = base.Client((DATABASE, 11211))
+        client.set("teams", teams)
+    
+    return "Ok"
 
 # Main route return the top teams today
 @service.route('/teams')
 def get_best_teams_of_today():
-    teams = load_teams()
-    
-    return jsonify(
-        teams
-    )
+    response = "error: o ranking de melhores times não foi inicializado."
 
+    client = base.Client((DATABASE, 11211))
+    teams = client.get("teams")
+    
+    if teams:
+        response = teams
+    
+    return response
+    
 if __name__ == "__main__":
     service.run(
         debug= DEBUG,
