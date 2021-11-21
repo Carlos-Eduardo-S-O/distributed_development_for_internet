@@ -7,6 +7,7 @@ service = Flask(__name__)
 
 # Service data
 IS_ALIVE = 'yes'
+#IS_ALIVE = 'no'
 DEBUG    = True
 HOST     = '0.0.0.0'
 PORT     = 5000

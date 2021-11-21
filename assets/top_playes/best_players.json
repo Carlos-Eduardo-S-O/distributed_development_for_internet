@@ -5,7 +5,8 @@
             "name": "Aleksandr 's1mple' KostylievUkraine",
             "nickname": "s1mple",
             "rating": 1.25,
-            "maps": 478
+            "maps": 478,
+            "country": "Ukraine"
         },
         {
             "ranking": 2,
@@ -63,6 +64,22 @@
             "rating":1.10,
             "maps": 366,
             "country": "Russia"
+        },
+        {
+            "ranking": 9,
+            "name": "Emil 'Magisk' Reif",
+            "nickname": "Magisk",
+            "rating": 1.08,
+            "maps": 765,
+            "country": "Denmark"
+        },
+        {
+            "ranking": 10,
+            "name": "Ladislav 'GuardiaN' Kovács",
+            "nickname": "GuardiaN",
+            "rating": 1.08,
+            "maps": 765,
+            "country": "Slovakia"
         }
     ]
 }

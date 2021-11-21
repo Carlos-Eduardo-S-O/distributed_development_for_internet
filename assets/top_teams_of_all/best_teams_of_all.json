@@ -34,19 +34,19 @@
             "rating": 1.00,
             "maps": 428
         },
-        
+
         {
             "ranking": 6,
-            "name": "MOUZ",
+            "name": "Fnatic",
             "rating": 1.00,
-            "maps": 329
+            "maps": 514
         },
 
         {
             "ranking": 7,
-            "name": "North",
-            "rating": 0.99,
-            "maps": 203
+            "name": "MOUZ",
+            "rating": 1.00,
+            "maps": 329
         },
 
         {
@@ -54,6 +54,18 @@
             "name": "G2",
             "rating": 0.99,
             "maps": 345
+        },
+        {
+            "ranking": 9,
+            "name": "Virtos.pro",
+            "rating": 0.99,
+            "maps": 363
+        },
+        {
+            "ranking": 10,
+            "name": "NIP",
+            "rating": 0.98,
+            "maps": 463
         }
     ]
 }

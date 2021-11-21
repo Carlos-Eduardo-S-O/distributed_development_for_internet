@@ -15,8 +15,6 @@ TEAMS_ALL_IS_ALIVE    = TEAMS_OF_ALL_TIME_URL + "/isalive"
 
 # This method provide access to an url
 def access_url(url):
-    print("acessando a url: ", url)
-    
     response = request.urlopen(url)
     data = response.read()
     
@@ -52,24 +50,36 @@ def teams_of_all_is_alive():
 # Get the best playes from the playes service
 def get_best_csgo_players():
     data = access_url(PLAYERS_URL)
+    players = None
     
-    players = json.loads(data)
+    if data != "error: o ranking de jogadores não foi inicializado.": 
+        players = json.loads(data)
+    else:
+        return None
     
     return players
 
 # Get the best teams from the teams service
 def get_best_csgo_teams():
     data = access_url(TEAMS_URL)
+    teams = None
     
-    teams = json.loads(data)
+    if data != "error: o ranking de melhores times não foi inicializado.":
+        teams = json.loads(data)
+    else:
+        return None
     
     return teams
 
 # Get the best teams of all from the best teams of all service
 def get_best_csgo_teams_of_all_time():
     data = access_url(TEAMS_OF_ALL_TIME_URL)
+    teams = None
     
-    teams = json.loads(data)
+    if data != "error: o ranking de melhors times de todos os tempos não foi incializado.":
+        teams = json.loads(data)
+    else:
+        return None
     
     return teams
 
@@ -99,14 +109,14 @@ def header_for_players():
 def header_for_teams():
     footer()
     footer()
-    print("--------------------- MELHORES TIMES DO MUNDO DE TODOS OS TEMPOS ---------------------")
+    print("------------------------------ MELHORES TIMES DO MUNDO -------------------------------")
     footer()
     print("\n")
 
 def header_for_teams_of_all_time():
     footer()
     footer()
-    print("------------------------------ MELHORES TIMES DO MUNDO -------------------------------")
+    print("--------------------- MELHORES TIMES DO MUNDO DE TODOS OS TEMPOS ---------------------")
     footer()
     print("\n")
 
@@ -121,7 +131,7 @@ def print_ranking():
     if players_list:
         print_best_csgo_players(players_list)
     else:
-        print("Esse serviço não está no ar!")
+        print("Esse serviço não está no ar ou não foi inicializado!")
     print("")
     sleep(time)
     
@@ -129,7 +139,7 @@ def print_ranking():
     if teams_list:
         print_best_csgo_teams(teams_list)
     else:
-        print("Esse serviço não está no ar!")
+        print("Esse serviço não está no ar ou não foi inicializado!")
     print("")
     sleep(time)
     
@@ -137,7 +147,7 @@ def print_ranking():
     if teams_of_all_time:
         print_best_csgo_teams_of_all_time(teams_of_all_time)
     else: 
-        print("Esse serviço não está no ar!")
+        print("Esse serviço não está no ar ou não foi inicializado!")
     print("")
     sleep(time)
     
